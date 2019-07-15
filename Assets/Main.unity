@@ -458,7 +458,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 200
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -481,13 +481,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1477194106}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: -10}
+  m_LocalRotation: {x: 0.19996412, y: 0.3736123, z: -0.08282785, w: 0.90198}
+  m_LocalPosition: {x: -10, y: 1, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: 25, y: 45, z: 0}
 --- !u!1 &1547217435
 GameObject:
   m_ObjectHideFlags: 0
@@ -563,18 +563,14 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1547217435}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 77278acd79becf243b2ec7825bfe0417, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  sprites:
-  - {fileID: 21300000, guid: 0641d992bbacc194d88807279c6993a6, type: 3}
-  - {fileID: 21300002, guid: 0641d992bbacc194d88807279c6993a6, type: 3}
-  - {fileID: 21300004, guid: 0641d992bbacc194d88807279c6993a6, type: 3}
-  - {fileID: 21300006, guid: 0641d992bbacc194d88807279c6993a6, type: 3}
-  test: 0
-  mat: {fileID: 2100000, guid: f4507833fb6c64844a781fa945d7cb1c, type: 2}
+  size: {x: 0, y: 0, z: 0}
+  pivot: {x: 0, y: 0}
+  material: {fileID: 0}
 --- !u!4 &1547217439
 Transform:
   m_ObjectHideFlags: 0
