@@ -23,7 +23,7 @@ public class Quad : MonoBehaviour
 
     void OnEditorUpdate(SceneView vw)
     {
-        if(renderd!= null)
+        if (!renderd)
         {
             Start();
             renderd = true;
