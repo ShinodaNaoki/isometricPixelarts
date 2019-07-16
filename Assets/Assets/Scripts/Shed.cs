@@ -87,7 +87,6 @@ public class Shed : MonoBehaviour //opposite -> courtyard
     {
        
         Mesh mesh = new Mesh();
-
         /*
          *  　6
          * 5＜ ＞3
@@ -96,25 +95,25 @@ public class Shed : MonoBehaviour //opposite -> courtyard
          *  　0
          */
         var vertices = new Vector3[] {            
-            new Vector3(0, 0, 0), // 0:pivot
-            new Vector3(0, size.y, 0), // 1:nearest top
-            new Vector3(0, 0, size.z), // 2:bottom right
-            new Vector3(0, size.y, size.z), // 3:top right
-            new Vector3(size.x, 0, 0), // 4:bottom left
-            new Vector3(size.x, size.y, 0), // 5:top left
-            new Vector3(size.x, size.y, size.z), // 6:most far top
+            new Vector3(0, -0.5f, 0), // 0:pivot
+            new Vector3(0, size.y+0.5f, 0), // 1:nearest top
+            new Vector3(0, -0.5f, size.z), // 2:bottom right
+            new Vector3(0, size.y+0.5f, size.z), // 3:top right
+            new Vector3(size.x, -0.5f, 0), // 4:bottom left
+            new Vector3(size.x, size.y+0.5f, 0), // 5:top left
+            new Vector3(size.x, size.y+0.5f, size.z), // 6:most far top
         };
 
         var harfX = size.x * 0.5f;
         var harfZ = size.z * 0.5f;
         var uv = new Vector2[] {
-            ToUV(0, 0), // 0:pivot
-            ToUV(0, size.y), // 1:nearest top
-            ToUV(-size.z, harfZ), // 4:bottom left
-            ToUV(-size.z, harfZ + size.y), // 5:top left
-            ToUV(size.x, harfX), // 2:bottom right
-            ToUV(size.x, harfX + size.y),  // 3:top right
-            ToUV(size.x - size.z, harfX + harfZ + size.y), // 6:most far top
+            ToUV(0, -0.5f), // 0:pivot
+            ToUV(0, size.y+0.5f), // 1:nearest top
+            ToUV(-size.z, harfZ-0.5f), // 4:bottom left
+            ToUV(-size.z, harfZ + size.y+0.5f), // 5:top left
+            ToUV(size.x, harfX-0.5f), // 2:bottom right
+            ToUV(size.x, harfX + size.y+0.5f),  // 3:top right
+            ToUV(size.x - size.z, harfX + harfZ + size.y+0.5f), // 6:most far top
         };
 
         var triangles = new int[] {
