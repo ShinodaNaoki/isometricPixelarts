@@ -95,13 +95,13 @@ public class Shed : MonoBehaviour //opposite -> courtyard
          *  　0
          */
         var vertices = new Vector3[] {            
-            new Vector3(0, -0.5f, 0), // 0:pivot
-            new Vector3(0, size.y+0.5f, 0), // 1:nearest top
-            new Vector3(0, -0.5f, size.z), // 2:bottom right
-            new Vector3(0, size.y+0.5f, size.z), // 3:top right
-            new Vector3(size.x, -0.5f, 0), // 4:bottom left
-            new Vector3(size.x, size.y+0.5f, 0), // 5:top left
-            new Vector3(size.x, size.y+0.5f, size.z), // 6:most far top
+            new Vector3(0, 0, 0), // 0:pivot
+            new Vector3(0, size.y+1, 0), // 1:nearest top
+            new Vector3(0, 0, size.z), // 2:bottom right
+            new Vector3(0, size.y+1, size.z), // 3:top right
+            new Vector3(size.x, 0, 0), // 4:bottom left
+            new Vector3(size.x, size.y+1, 0), // 5:top left
+            new Vector3(size.x, size.y+1, size.z), // 6:most far top
         };
 
         var harfX = size.x * 0.5f;
