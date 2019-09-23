@@ -32,7 +32,11 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     [SerializeField, Header("テクスチャの最手前座標")]
     private Vector2Int pivot;
 
-    public Sprite sprite;
+    [SerializeField, Header("昼用スプライト")]
+    public Sprite sprite4Day;
+
+    [SerializeField, Header("夜用スプライト")]
+    public Sprite sprite4Night;
 
     // ドット絵を保持するマテリアル    
     public Material material;
@@ -79,7 +83,8 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
         Mesh mesh = InitializeCube();
         var newMaterial = Instantiate(material);
-        newMaterial.SetTexture("_MainTex", sprite.texture);
+        newMaterial.SetTexture("_DayTex", sprite4Day.texture);
+        newMaterial.SetTexture("_NightTex", sprite4Night.texture);
         GetComponent<MeshFilter>().sharedMesh = mesh;
         GetComponent<MeshRenderer>().material = newMaterial;
     }
@@ -90,7 +95,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// <returns></returns>
     private Vector2Int GetTextureSize()
     {
-        var tex = sprite.texture;
+        var tex = sprite4Day.texture;
 
         return new Vector2Int(tex.width, tex.height);
     }
@@ -101,7 +106,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// <returns></returns>
     private RectInt GetSpriteRect()
     {
-        var rect = sprite.textureRect;
+        var rect = sprite4Day.textureRect;
 
         return new RectInt((int)rect.x, (int)rect.y, (int)rect.width, (int)rect.height);
     }
@@ -135,14 +140,14 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
          * 4＜|＞2
          *  　0
          */
-        var vertices = new Vector3[] {            
-            new Vector3(0, -0.5f, 0), // 0:pivot
-            new Vector3(0, size.y+0.5f, 0), // 1:nearest top
-            new Vector3(0, -0.5f, size.z), // 2:bottom right
-            new Vector3(0, size.y+0.5f, size.z), // 3:top right
-            new Vector3(size.x, -0.5f, 0), // 4:bottom left
-            new Vector3(size.x, size.y+0.5f, 0), // 5:top left
-            new Vector3(size.x, size.y+0.5f, size.z), // 6:most far top
+        var vertices = new Vector3[] {
+            new Vector3(0, 0, 0), // 0:pivot
+            new Vector3(0, size.y+1, 0), // 1:nearest top
+            new Vector3(0, 0, size.z), // 2:bottom right
+            new Vector3(0, size.y+1, size.z), // 3:top right
+            new Vector3(size.x, 0, 0), // 4:bottom left
+            new Vector3(size.x, size.y+1, 0), // 5:top left
+            new Vector3(size.x, size.y+1, size.z), // 6:most far top
         };
 
         var harfX = size.x * 0.5f;
