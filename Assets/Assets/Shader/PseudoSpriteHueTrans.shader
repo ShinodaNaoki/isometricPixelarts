@@ -1,4 +1,5 @@
-﻿Shader "Custom/PseudoSpriteHueTrans"
+﻿
+Shader "Custom/PseudoSpriteHueTrans"
 {
     Properties
     {
@@ -72,7 +73,7 @@
                 // test srcCol if the two of r,g,b are 0.
                 float d1 = (1 - srcCol.r) * (1 - srcCol.g) * (1 - srcCol.b);
                 float d2 = srcCol.r + srcCol.g + srcCol.b;
-                float d = step(abs(d1 - d2),1);
+                float d = step(d1 + d2, 1);
                 fixed3 rgb = lerp(
                     srcCol.rgb,
                     _RedTransfar * srcCol.r + _GreenTransfar * srcCol.g + _BlueTransfar * srcCol.b,
