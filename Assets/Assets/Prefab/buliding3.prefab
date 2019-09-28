@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 174826353781122145}
   - component: {fileID: 6087772031664740922}
+  - component: {fileID: 57347683}
   - component: {fileID: 174826353781122147}
   - component: {fileID: 174826353781122146}
   m_Layer: 0
@@ -50,6 +51,18 @@ MonoBehaviour:
   sprite4Day: {fileID: 21300004, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
   sprite4Night: {fileID: 21300004, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
   material: {fileID: 2100000, guid: f5de02e72438e6c4eb1a79f04bc7aa10, type: 2}
+--- !u!114 &57347683
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 174826353781122149}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55daa646b60c6446ad256fa4093c174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!23 &174826353781122147
 MeshRenderer:
   m_ObjectHideFlags: 0
