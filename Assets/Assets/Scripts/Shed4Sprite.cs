@@ -24,13 +24,18 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     {
         Start();
     }
+
+    public bool zoomAroundPivot;
 #endif
 
     [SerializeField, Header("ドット絵の3Dサイズ")]
-    private Vector3Int size;
+    public Vector3Int size;
 
-    [SerializeField, Header("テクスチャの最手前座標")]
-    private Vector2Int pivot;
+    [SerializeField, Header("ドット絵の最手前座標")]
+    public Vector2Int pivot;
+
+    [SerializeField, Header("スプライトとpivot.xからsize自動計算")]
+    public bool autoSizeAdjust = true;
 
     public Sprite sprite;
 
@@ -42,6 +47,20 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
     // Spriteのテクスチャ領域
     private RectInt spriteRect;
+    
+    public RectInt SpriteRect
+    {
+        get { return spriteRect; }
+    }
+
+    public Vector2Int Size2D
+    {
+        get {
+            if (autoSizeAdjust) return spriteRect.size;
+            var w = size.x + size.z;
+            return new Vector2Int(w, size.y + w / 2);
+        }
+    }
 
     private void Awake()
     {
@@ -66,16 +85,29 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
             return sprite.texture;
     }
 
+    private void doAutoSizeAdjust()
+    {
+        spriteRect = GetSpriteRect();
+        texSize = GetTextureSize();
+        Debug.LogFormat("Texture size:({0},{1})", texSize.x, texSize.y);
+        Debug.LogFormat("Sprite rect:({0},{1})-({2},{3})", spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height);
+        pivot.y = 0;
+        pivot.x = Mathf.Clamp(pivot.x, 0, spriteRect.width);
+
+        size.z = pivot.x;
+        size.x = spriteRect.width - pivot.x;
+        size.y = spriteRect.height - spriteRect.width / 2;
+    }
 
     void Start()
     {
         if (!needRestruct) return;
         needRestruct = true;
 
-        spriteRect = GetSpriteRect();
-        texSize = GetTextureSize();
-        Debug.LogFormat("Texture size:({0},{1})", texSize.x, texSize.y);
-        Debug.LogFormat("Sprite rect:({0},{1})-({2},{3})", spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height);
+        if (autoSizeAdjust)
+        {
+            doAutoSizeAdjust();
+        }
 
         Mesh mesh = InitializeCube();
         var newMaterial = Instantiate(material);
@@ -83,6 +115,29 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
         GetComponent<MeshFilter>().sharedMesh = mesh;
         GetComponent<MeshRenderer>().material = newMaterial;
     }
+
+#if UNITY_EDITOR
+    /// <summary>
+    ///  インスペクターからメッシュを再設定する
+    /// </summary>
+    public void UpdateMesh() {
+        this.needRestruct = true;
+        this.Start();
+    }
+
+    /// <summary>
+    /// 設定されたテクスチャが3Dサイズで要求されるサイズに足りない
+    /// </summary>
+    public bool IsTextureHasNotEnoughSize
+    {
+        get
+        {
+            if (sprite == null) return true;
+            return texSize.y < size.y + (size.x + size.z) / 2;
+        }
+    }
+
+#endif
 
     /// <summary>
     /// テクスチャサイズを取得
@@ -114,9 +169,10 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// <returns></returns>    
     private Vector2 ToUV(float offestX, float offsetY)
     {
-        
-        var pos = new Vector2((pivot.x + offestX + spriteRect.x) / texSize.x, (texSize.y - pivot.y + offsetY + spriteRect.y - spriteRect.height) / texSize.y);
-        Debug.LogFormat("ToUV:({0},{1})",pos.x, pos.y);
+        var x = pivot.x + offestX + spriteRect.x;
+        var y = pivot.y + offsetY + spriteRect.y;
+        var pos = new Vector2( x / texSize.x, y / texSize.y);
+        //Debug.LogFormat("ToUV:({0},{1})",pos.x, pos.y);
         return pos;
     }
 
