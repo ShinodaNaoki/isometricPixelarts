@@ -46,8 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314bd90ba1d07a9468c9c906074b5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  zoomAroundPivot: 0
   size: {x: 80, y: 52, z: 96}
   pivot: {x: 96, y: 148}
+  autoSizeAdjust: 1
   sprite4Day: {fileID: 21300004, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
   sprite4Night: {fileID: 21300004, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
   material: {fileID: 2100000, guid: f5de02e72438e6c4eb1a79f04bc7aa10, type: 2}

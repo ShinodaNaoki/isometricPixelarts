@@ -9,7 +9,8 @@ using UnityEditor.SceneManagement;
 public class Shed4SpriteEditor : Editor
 {
     Shed4Sprite shed = null;
-    SerializedProperty sprite;
+    SerializedProperty sprite4Day;
+    SerializedProperty sprite4Night;
     SerializedProperty material;
     SerializedProperty pivot;
     SerializedProperty size;
@@ -18,7 +19,8 @@ public class Shed4SpriteEditor : Editor
     void OnEnable()
     {
         shed = target as Shed4Sprite;
-        sprite = serializedObject.FindProperty("sprite");
+        sprite4Day = serializedObject.FindProperty("sprite4Day");
+        sprite4Night = serializedObject.FindProperty("sprite4Night");
         material = serializedObject.FindProperty("material");
         pivot = serializedObject.FindProperty("pivot");
         size = serializedObject.FindProperty("size");
@@ -37,7 +39,8 @@ public class Shed4SpriteEditor : Editor
         EditorGUI.BeginChangeCheck();
 
         EditorGUILayout.PropertyField(pivot);
-        EditorGUILayout.PropertyField(sprite);
+        EditorGUILayout.PropertyField(sprite4Day);
+        EditorGUILayout.PropertyField(sprite4Night);
         EditorGUILayout.PropertyField(material);
 
         EditorGUILayout.PropertyField(autoAdjust);
@@ -111,7 +114,7 @@ public class Shed4SpriteEditor : Editor
         Handles.DrawSolidRectangleWithOutline(new Rect(maxPos.x, offsetPos.y, -size3D.z - border, border - 1), Color.green, Color.green);
         Handles.DrawSolidRectangleWithOutline(new Rect(maxPos.x, offsetPos.y, border - 1, size3D.z / 2 + border), Color.green, Color.green);
 
-        var texture = shed.sprite.texture;
+        var texture = shed.sprite4Day.texture;
         var texRect = shed.SpriteRect;
         var texSize = new Vector2(texture.width, texture.height);
         //Debug.LogFormat($"({texSize.x},{texSize.y}) , ({texRect.xMin},{texRect.yMin}) -({texRect.xMax}, {texRect.yMax})");
@@ -138,7 +141,7 @@ public class Shed4SpriteEditor : Editor
         Handles.DrawSolidRectangleWithOutline(new Rect(r.x, r.yMax, hfWidth, border - 1), Color.red, Color.red);
         Handles.DrawSolidRectangleWithOutline(new Rect(r.x + hfWidth, r.yMax, hfWidth, border - 1), Color.green, Color.green);
 
-        var texture = shed.sprite.texture;
+        var texture = shed.sprite4Day.texture;
         var texRect = shed.SpriteRect;
         var texSize = new Vector2(texture.width, texture.height);
         //Debug.LogFormat($"({texSize.x},{texSize.y}) , ({texRect.xMin},{texRect.yMin}) -({texRect.xMax}, {texRect.yMax})");

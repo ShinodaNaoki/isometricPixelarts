@@ -18,7 +18,7 @@ public class DayNightAnimator : MonoBehaviour
         MeshRenderer renderer = GetComponent<MeshRenderer>();
         if (renderer == null) return;
 
-        Material material  = renderer.material;
+        Material material  = renderer.sharedMaterial;
         float time = Mathf.Repeat(Time.fixedTime / 5f, 1f);
 
         if (SUNSET_BEGIN < time && time < SUNSET_END) // 夕焼けタイム

@@ -43,7 +43,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     [SerializeField, Header("夜用スプライト")]
     public Sprite sprite4Night;
 
-    // ドット絵を保持するマテリアル    
+    // ドット絵を保持するマテリアル
     public Material material;
 
     // マテリアルのメインテクスチャサイズ
@@ -51,7 +51,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
     // Spriteのテクスチャ領域
     private RectInt spriteRect;
-    
+
     public RectInt SpriteRect
     {
         get { return spriteRect; }
@@ -115,6 +115,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
         Mesh mesh = InitializeCube();
         var newMaterial = Instantiate(material);
+        newMaterial.SetTexture("_MainTex", sprite4Day.texture);
         newMaterial.SetTexture("_DayTex", sprite4Day.texture);
         newMaterial.SetTexture("_NightTex", sprite4Night.texture);
         GetComponent<MeshFilter>().sharedMesh = mesh;
@@ -137,7 +138,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     {
         get
         {
-            if (sprite == null) return true;
+            if (sprite4Day == null) return true;
             return texSize.y < size.y + (size.x + size.z) / 2;
         }
     }
@@ -171,7 +172,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// </summary>
     /// <param name="offestX"></param>
     /// <param name="offsetY"></param>
-    /// <returns></returns>    
+    /// <returns></returns>
     private Vector2 ToUV(float offestX, float offsetY)
     {
         var x = pivot.x + offestX + spriteRect.x;
@@ -187,7 +188,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// <returns></returns>
     private Mesh InitializeCube()
     {
-       
+
         Mesh mesh = new Mesh();
         /*
          *  　6
@@ -219,8 +220,8 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
         };
 
         var triangles = new int[] {
-            0,3,1, 0,2,3, // Right Surface 
-            5,4,0, 0,1,5, // Left Surface 
+            0,3,1, 0,2,3, // Right Surface
+            5,4,0, 0,1,5, // Left Surface
             1,3,5, 3,6,5, // Upper Surface
         };
 

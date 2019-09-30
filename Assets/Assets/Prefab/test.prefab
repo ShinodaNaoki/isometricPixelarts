@@ -40,7 +40,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3771154596325211606}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 314bd90ba1d07a9468c9c906074b5892, type: 3}
   m_Name: 
@@ -49,7 +49,8 @@ MonoBehaviour:
   size: {x: 48, y: 48, z: 32}
   pivot: {x: 32, y: 0}
   autoSizeAdjust: 1
-  sprite: {fileID: 21300000, guid: 3591f6e8998003e4e944bbe888df983f, type: 3}
+  sprite4Day: {fileID: 21300000, guid: 3591f6e8998003e4e944bbe888df983f, type: 3}
+  sprite4Night: {fileID: 0}
   material: {fileID: 2100000, guid: cc9caea854970d74fb2daf917ffccea4, type: 2}
 --- !u!23 &3771154596325211600
 MeshRenderer:
