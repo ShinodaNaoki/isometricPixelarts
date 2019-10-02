@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ContentModelStore">
+    <e p="/app" t="IncludeRecursive" />
+    <e p="/f589ff72" t="IncludeRecursive" />
+    <e p="$PROJECT_DIR$" t="IncludeRecursive">
+      <e p="Assembly-CSharp-Editor.csproj" t="IncludeRecursive" />
+      <e p="Assembly-CSharp.csproj" t="IncludeRecursive" />
+      <e p="Assets" t="Include">
+        <e p="Assets" t="Include">
+          <e p="Scripts" t="Include">
+            <e p="DayNightAnimator.cs" t="Include" />
+            <e p="Editor" t="Include">
+              <e p="Shed4SpriteEditor.cs" t="Include" />
+            </e>
+            <e p="Quad.cs" t="Include" />
+            <e p="QuaterView.cs" t="Include" />
+            <e p="Shed.cs" t="Include" />
+            <e p="Shed4Sprite.cs" t="Include" />
+          </e>
+          <e p="Shader" t="Include">
+            <e p="HueTrans.shader" t="Include" />
+            <e p="PseudoSprite.shader" t="Include" />
+            <e p="PseudoSpriteAdvance.shader" t="Include" />
+            <e p="PseudoSpriteHueTrans.shader" t="Include" />
+          </e>
+        </e>
+      </e>
+      <e p="isometricPixelarts.sln" t="IncludeFlat" />
+      <e p="Library" t="ExcludeRecursive" />
+      <e p="obj" t="ExcludeRecursive" />
+      <e p="packages" t="ExcludeRecursive" />
+      <e p="Temp" t="ExcludeRecursive">
+        <e p="bin" t="ExcludeRecursive" />
+      </e>
+    </e>
+    <e p="$USER_HOME$/Library/Caches/Rider2018.2/extResources" t="IncludeRecursive" />
+    <e p="$USER_HOME$/Library/Caches/Rider2018.2/resharper-host/local/Transient/ReSharperHost/v182/SolutionCaches/_isometricPixelarts.-1785737038.00" t="ExcludeRecursive" />
+    <e p="$APPLICATION_CONFIG_DIR$/extensions" t="IncludeRecursive" />
+  </component>
+</project>

@@ -45,11 +45,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 314bd90ba1d07a9468c9c906074b5892, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  size: {x: 80, y: 80, z: 192}
-  pivot: {x: 192, y: 200}
-  sprite4Day: {fileID: 21300000, guid: 2a0a5c95473ab2f4b9821c3698e87b62, type: 3}
-  sprite4Night: {fileID: 21300000, guid: 01479fea14e64474e951577179ebb2d0, type: 3}
-  material: {fileID: 2100000, guid: b6a4b9ba96201cd46b15d6dba8086ada, type: 2}
+  zoomAroundPivot: 0
+  size: {x: 80, y: 64, z: 192}
+  pivot: {x: 192, y: 0}
+  autoSizeAdjust: 1
+  sprite4Day: {fileID: 21300004, guid: 0641d992bbacc194d88807279c6993a6, type: 3}
+  sprite4Night: {fileID: 0}
+  material: {fileID: 2100000, guid: cc9caea854970d74fb2daf917ffccea4, type: 2}
 --- !u!23 &7512469973961249683
 MeshRenderer:
   m_ObjectHideFlags: 0

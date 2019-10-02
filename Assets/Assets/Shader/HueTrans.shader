@@ -2,7 +2,7 @@
 {
     Properties
     {
-        [NoScaleOffset] _MainTex ("Day Texture", 2D) = "white" {}
+        [NoScaleOffset] _MainTex ("Texture", 2D) = "white" {}
 
         _RedTransfar ("RED Transfer Color", Color) = (1,0,0,1)
         _GreenTransfar ("GREEN Transfer Color", Color) = (0,1,0,1)
@@ -52,7 +52,7 @@
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
             }
-            
+
             inline fixed4 transferColor(in fixed4 srcCol) {
                 // test srcCol if the two of r,g,b are 0.
                 float d1 = (1 - srcCol.r) * (1 - srcCol.g) * (1 - srcCol.b);
