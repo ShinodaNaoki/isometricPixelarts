@@ -54,6 +54,11 @@ public class Shed4SpriteEditor : Editor
         //　シリアライズオブジェクトのプロパティの変更を更新
         serializedObject.ApplyModifiedProperties();
 
+        string help = shed.heplMessage;
+        if (help != null && help.Length > 0)
+        {
+            EditorGUILayout.HelpBox(help, MessageType.Warning);
+        }
 
         if (EditorGUI.EndChangeCheck())
         {
@@ -135,8 +140,8 @@ public class Shed4SpriteEditor : Editor
         var hfHeight = r.height / 2;
 
         // 3D投影サイズ境界のx,zを赤と緑の外殻線で描く
-        Handles.DrawSolidRectangleWithOutline(new Rect(r.x, r.yMax, hfWidth, border - 1), Color.red, Color.red);
-        Handles.DrawSolidRectangleWithOutline(new Rect(r.x + hfWidth, r.yMax, hfWidth, border - 1), Color.green, Color.green);
+        Handles.DrawSolidRectangleWithOutline(new Rect(r.x, r.yMax, hfWidth, border - 1), Color.green, Color.green);
+        Handles.DrawSolidRectangleWithOutline(new Rect(r.x + hfWidth, r.yMax, hfWidth, border - 1), Color.red, Color.red);
 
         var texture = shed.sprite.texture;
         var texRect = shed.SpriteRect;

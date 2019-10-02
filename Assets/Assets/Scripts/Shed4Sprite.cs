@@ -39,7 +39,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
     public Sprite sprite;
 
-    // ドット絵を保持するマテリアル    
+    // ドット絵を保持するマテリアル
     public Material material;
 
     // マテリアルのメインテクスチャサイズ
@@ -47,7 +47,10 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
     // Spriteのテクスチャ領域
     private RectInt spriteRect;
-    
+
+    // Inspector 表示用の警告メッセージ
+    public string heplMessage;
+
     public RectInt SpriteRect
     {
         get { return spriteRect; }
@@ -87,8 +90,6 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
     private void doAutoSizeAdjust()
     {
-        spriteRect = GetSpriteRect();
-        texSize = GetTextureSize();
         Debug.LogFormat("Texture size:({0},{1})", texSize.x, texSize.y);
         Debug.LogFormat("Sprite rect:({0},{1})-({2},{3})", spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height);
         pivot.y = 0;
@@ -97,16 +98,31 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
         size.z = pivot.x;
         size.x = spriteRect.width - pivot.x;
         size.y = spriteRect.height - spriteRect.width / 2;
+
+        if (size.y < 0)
+        {
+            heplMessage = "スプライトの高さが足りません。最低でも横幅の半分以上必要です。";
+            size.y = 0;
+        }
     }
 
     void Start()
     {
         if (!needRestruct) return;
         needRestruct = true;
+        heplMessage = null;
+
+        if (fieldsNotReady()) return;
+        spriteRect = GetSpriteRect();
+        texSize = GetTextureSize();
 
         if (autoSizeAdjust)
         {
             doAutoSizeAdjust();
+        }
+        else if (!verifySize())
+        {
+            heplMessage = "スプライトのサイズは指定の3Dサイズに必要な大きさがありません";
         }
 
         Mesh mesh = InitializeCube();
@@ -114,6 +130,29 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
         newMaterial.SetTexture("_MainTex", sprite.texture);
         GetComponent<MeshFilter>().sharedMesh = mesh;
         GetComponent<MeshRenderer>().material = newMaterial;
+    }
+
+    private bool fieldsNotReady()
+    {
+        if (material == null)
+        {
+            heplMessage = "マテリアルを設定してください";
+            return true;
+        }
+        if (sprite == null)
+        {
+            heplMessage = "スプライトを設定してください";
+            return true;
+        }
+
+        return false;
+    }
+
+    private bool verifySize()
+    {
+        var width = size.x + size.z;
+        if (spriteRect.width < width) return false;
+        return spriteRect.height >= size.y + width / 2;
     }
 
 #if UNITY_EDITOR
@@ -166,7 +205,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// </summary>
     /// <param name="offestX"></param>
     /// <param name="offsetY"></param>
-    /// <returns></returns>    
+    /// <returns></returns>
     private Vector2 ToUV(float offestX, float offsetY)
     {
         var x = pivot.x + offestX + spriteRect.x;
@@ -182,7 +221,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     /// <returns></returns>
     private Mesh InitializeCube()
     {
-       
+
         Mesh mesh = new Mesh();
         /*
          *  　6
@@ -191,7 +230,7 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
          * 4＜|＞2
          *  　0
          */
-        var vertices = new Vector3[] {            
+        var vertices = new Vector3[] {
             new Vector3(0, -0.5f, 0), // 0:pivot
             new Vector3(0, size.y+0.5f, 0), // 1:nearest top
             new Vector3(0, -0.5f, size.z), // 2:bottom right
@@ -214,8 +253,8 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
         };
 
         var triangles = new int[] {
-            0,3,1, 0,2,3, // Right Surface 
-            5,4,0, 0,1,5, // Left Surface 
+            0,3,1, 0,2,3, // Right Surface
+            5,4,0, 0,1,5, // Left Surface
             1,3,5, 3,6,5, // Upper Surface
         };
 
