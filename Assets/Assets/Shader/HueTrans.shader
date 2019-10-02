@@ -68,19 +68,19 @@
                 flag = (1 - flag) * step(1, srcCol.r) * step(1, 1- abs(srcCol.g - srcCol.b));
                 rgb = lerp(
                     rgb,
-                    lerp(white, _RedTransfar, srcCol.r - srcCol.g),
+                    lerp(_RedTransfar, white, srcCol.g),
                     flag);
 
                 flag = (1 - flag) * step(1, srcCol.g) * step(1, 1- abs(srcCol.b - srcCol.r));
                 rgb = lerp(
                     rgb,
-                    lerp(white, _GreenTransfar, srcCol.g - srcCol.b),
+                    lerp(_GreenTransfar, white, srcCol.b),
                     flag);
 
                 flag = (1 - flag) * step(1, srcCol.b) * step(1, 1- abs(srcCol.r - srcCol.g));
                 rgb = lerp(
                     rgb,
-                    lerp(white, _BlueTransfar, srcCol.b - srcCol.r),
+                    lerp(_BlueTransfar, white, srcCol.r),
                     flag);
                 return fixed4(rgb,1);
             }
