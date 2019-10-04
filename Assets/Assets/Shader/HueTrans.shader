@@ -54,34 +54,22 @@
             }
 
             inline fixed4 transferColor(in fixed4 srcCol) {
+
+                float lowest = min(srcCol.r, min(srcCol.g, srcCol.b));
+                fixed3 hueCol = srcCol.rgb - lowest;
+                fixed3 hilight = fixed3(lowest,lowest,lowest);
+
                 // test srcCol if the two of r,g,b are 0.
-                float d1 = (1 - srcCol.r) * (1 - srcCol.g) * (1 - srcCol.b);
-                float d2 = srcCol.r + srcCol.g + srcCol.b;
+                float d1 = (1 - hueCol.r) * (1 - hueCol.g) * (1 - hueCol.b);            
+                float d2 = hueCol.r + hueCol.g + hueCol.b;                
                 float flag = step(d1 + d2, 1);
 
                 fixed3 rgb = lerp(
                     srcCol.rgb,
-                    _RedTransfar * srcCol.r + _GreenTransfar * srcCol.g + _BlueTransfar * srcCol.b,
+                    _RedTransfar * hueCol.r + _GreenTransfar * hueCol.g + _BlueTransfar * hueCol.b + hilight,
                     flag );
 
-                fixed3 white = fixed3(1,1,1);
-                flag = (1 - flag) * step(1, srcCol.r) * step(1, 1- abs(srcCol.g - srcCol.b));
-                rgb = lerp(
-                    rgb,
-                    lerp(_RedTransfar, white, srcCol.g),
-                    flag);
-
-                flag = (1 - flag) * step(1, srcCol.g) * step(1, 1- abs(srcCol.b - srcCol.r));
-                rgb = lerp(
-                    rgb,
-                    lerp(_GreenTransfar, white, srcCol.b),
-                    flag);
-
-                flag = (1 - flag) * step(1, srcCol.b) * step(1, 1- abs(srcCol.r - srcCol.g));
-                rgb = lerp(
-                    rgb,
-                    lerp(_BlueTransfar, white, srcCol.r),
-                    flag);
+               
                 return fixed4(rgb,1);
             }
 
