@@ -30,10 +30,11 @@ public class QuaterView : MonoBehaviour
         Awake();
     }
 
-    private float CalcOrthoSize()
+    private Vector2 CalcOrthoSize()
     {
         // 画面の高さの半分＝等倍サイズ
-        return camera.pixelHeight / (zoom * 2f);
+        var hsize = camera.pixelHeight / (zoom * 2f);
+        return new Vector2((float)camera.pixelWidth / camera.pixelHeight * hsize, hsize);
     }
 
     private void AdjustCamera()
@@ -52,9 +53,11 @@ public class QuaterView : MonoBehaviour
             m20 =-0.5f, m21 = 1.0f, m22 =-0.5f, m23 = 0.0f - pos.z - distance,
             m30 = 0.0f, m31 = 0.0f, m32 = 0.0f, m33 = 1.0f            
         };
-
+        
+        var orthoSize = CalcOrthoSize();
+        var projMatrix = Matrix4x4.Ortho(orthoSize.x * -1, orthoSize.x, orthoSize.y * -1, orthoSize.y, 0, 1000);
+        camera.projectionMatrix = projMatrix;
         camera.worldToCameraMatrix = matrix;
-        camera.orthographicSize = CalcOrthoSize();
-       
+
     }
 }

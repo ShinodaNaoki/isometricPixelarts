@@ -74,8 +74,6 @@
                 // apply color burn effect to the day color.
                 fixed3 colBurn = (1 - _BurnColor.rgb) * _BurnRatio;
                 colDay = fixed4(colDay.rgb - colBurn,1);
-                //colDay = fixed4(lerp(colDay.rgb, _BurnColor.rgb, _BurnRatio),1); // 通常
-                //colDay = fixed4( lerp(colDay.rgb, _BurnColor.rgb * colDay.rgb, _BurnRatio),1); // 乗算
 
                 // mixing day and night by ratio, unless it lowers night color.
                 fixed4 col = max(lerp(colNight, colDay, _DayRatio), colNight);
