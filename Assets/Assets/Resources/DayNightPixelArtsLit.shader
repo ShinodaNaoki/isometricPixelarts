@@ -1,14 +1,6 @@
 ﻿Shader "Hidden/DayNightPixelArtsLit"
 {
-Properties {
-    _LightTexture0 ("", any) = "" {}
-    _LightTextureB0 ("", 2D) = "" {}
-    _ShadowMapTexture ("", any) = "" {}
-    _SrcBlend ("", Float) = 1
-    _DstBlend ("", Float) = 1
-}
 SubShader {
-
 // Pass 1: Lighting pass
 //  LDR case - Lighting encoded into a subtractive ARGB8 buffer
 //  HDR case - Lighting additively blended into floating point buffer
@@ -42,49 +34,19 @@ sampler2D _DepthTexture;
 half4 CalculateLight (unity_v2f_deferred i)
 {
     float2 uv = i.uv.xy / i.uv.w;
-    half4 g0 = tex2D (_CameraGBufferTexture0, uv);
-    half4 g1 = tex2D (_CameraGBufferTexture1, uv);
-    half4 g2 = tex2D (_CameraGBufferTexture2, uv);
-    half4 g3 = tex2D (_CameraGBufferTexture3, uv);
+    half4 colDay = tex2D (_CameraGBufferTexture0, uv);
+    half4 normal = tex2D (_CameraGBufferTexture1, uv);
+    half4 idCol = tex2D (_CameraGBufferTexture2, uv);
+    half4 colNight = tex2D (_CameraGBufferTexture3, uv);
 
     half4 dpt = tex2D (_DepthTexture, i.uv);
+
     
-    half4 res = lerp(g0, g1, 0.5);
-
-    half4 c0 = g0 * 0;
-    return g0;
-
-    /*
-    float3 wpos;
-    float2 uv;
-    float atten, fadeDist;
-    UnityLight light;
-    UNITY_INITIALIZE_OUTPUT(UnityLight, light);
-    UnityDeferredCalculateLightParams (i, wpos, uv, light.dir, atten, fadeDist);
-
-
-    // unpack Gbuffer
-    half4 gbuffer0 = tex2D (_CameraGBufferTexture0, uv);
-    half4 gbuffer1 = tex2D (_CameraGBufferTexture1, uv);
-    half4 gbuffer2 = tex2D (_CameraGBufferTexture2, uv);
-    half4 gbuffer3 = tex2D (_CameraGBufferTexture3, uv);
-    UnityStandardData data = UnityStandardDataFromGbuffer(gbuffer0, gbuffer1, gbuffer2);
-    light.color = gbuffer0.rgb;
-
-    float3 eyeVec = normalize(wpos-_WorldSpaceCameraPos);
-    half oneMinusReflectivity = 1 - SpecularStrength(data.specularColor.rgb);
-
-    UnityIndirect ind;
-    UNITY_INITIALIZE_OUTPUT(UnityIndirect, ind);
-    ind.diffuse = 0;
-    ind.specular = 0;
-
-    light.dir = half3(0.0, 1.0, 0.0);  // 光源の向きを(0, 1, 0)に書き換える
-
-    half4 res = UNITY_BRDF_PBS (data.diffuseColor, data.specularColor, oneMinusReflectivity, data.smoothness, data.normalWorld, -eyeVec, light, ind);
-
-    return res;
-    */
+    
+    // apply color burn effect to the day color.
+    fixed3 colBurn = (1 - _LightColor .rgb) * _LightColor.a;
+    colDay = fixed4(colDay.rgb - colBurn,1);
+    return lerp(colNight, colDay, 1 - _LightColor.a);
 }
 
 #ifdef UNITY_HDR_ON

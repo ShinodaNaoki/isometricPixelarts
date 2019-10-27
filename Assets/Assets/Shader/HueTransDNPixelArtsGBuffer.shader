@@ -1,4 +1,4 @@
-﻿Shader "Custom/DayNightPixelArtsGBuffer"
+﻿Shader "Custom/HueTransDNPixelArtsGBuffer"
 {
   Properties
   {
@@ -7,6 +7,9 @@
     [MaterialToggle] _NightTexEnabled ("Night Texture Enabled", Float) = 1
     _Transpalent ("Transpalent Color", Color) = (1,0,1,1)
     _IDColor ("Color fo source object ID", Color) = (0,0,0,0)
+    _RedTransfar ("RED Transfer Color", Color) = (1,0,0,1)
+    _GreenTransfar ("GREEN Transfer Color", Color) = (0,1,0,1)
+    _BlueTransfar ("BLUE Transfer Color", Color) = (0,0,1,1)
   }
   SubShader
   {
@@ -50,6 +53,10 @@
         float depth: SV_DEPTH;
       };
 
+      fixed3 _RedTransfar;
+      fixed3 _GreenTransfar;
+      fixed3 _BlueTransfar;
+
       sampler2D _DayTex;
       float4 _DayTex_ST;
       sampler2D _NightTex;
@@ -66,15 +73,38 @@
         o.uv = TRANSFORM_TEX(v.uv, _DayTex);
       }
 
+      inline fixed4 transferColor(in fixed4 srcCol) {
+        float lowest = min(srcCol.r, min(srcCol.g, srcCol.b));
+        fixed3 hueCol = srcCol.rgb - lowest;
+        fixed3 hilight = fixed3(lowest,lowest,lowest);
+
+        // test srcCol if the two of r,g,b are 0.
+        float d1 = (1 - hueCol.r) * (1 - hueCol.g) * (1 - hueCol.b);
+        float d2 = hueCol.r + hueCol.g + hueCol.b;
+        float flag = step(d1 + d2, 1);
+
+        fixed3 rgb = lerp(
+        srcCol.rgb,
+        _RedTransfar * hueCol.r + _GreenTransfar * hueCol.g + _BlueTransfar * hueCol.b + hilight,
+        flag );
+
+
+        return fixed4(rgb,1);
+      }
+
       void frag (in v2f i, out flagout o)
       {
         fixed4 colDay = tex2D(_DayTex, i.uv);
+        colDay = transferColor(colDay);
         // stop rendering if it is transpalent color.
         fixed3 diff = abs(colDay.rgb - _Transpalent.rgb);
         if(length(diff) < 0.0001) discard;
 
+        fixed4 colNight = tex2D(_NightTex, i.uv);
+        colNight = transferColor(colNight);
+
         // use 25% brightness of day texture, if night texture is disabled.
-        fixed4 colNight = lerp(colDay * 0.25, tex2D(_NightTex, i.uv), _NightTexEnabled);
+        colNight = lerp(colDay * 0.25, colNight, _NightTexEnabled);
 
         o.gBuffer0 = colDay;
         o.gBuffer3 = colNight;

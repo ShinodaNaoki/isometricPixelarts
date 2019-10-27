@@ -13,36 +13,35 @@ public class DayNightAnimator : MonoBehaviour
     const float LIGHT_BEGIN = 0.2f;
     const float LIGHT_END = 0.5f;
 
+    private Light light0 = null;
+
+    void Awake()
+    {
+        if (light0 == null)
+        {
+            light0 = GetComponent<Light>();
+        }
+    }
+
+    void OnValidate()
+    {
+        Awake();
+    }
+
     private void Update()
     {
-        MeshRenderer renderer = GetComponent<MeshRenderer>();
-        if (renderer == null) return;
-
-        Material material  = renderer.sharedMaterial;
         float time = Mathf.Repeat(Time.fixedTime / 5f, 1f);
-
         if (SUNSET_BEGIN < time && time < SUNSET_END) // 夕焼けタイム
         {
             float rate = (time - SUNSET_BEGIN) / (SUNSET_END - SUNSET_BEGIN);
-            material.SetFloat("_DayRatio", 1f - rate);
-            material.SetFloat("_BurnRatio", rate);
-            material.SetColor("_BurnColor", new Color(1f, 0.3f, 0f));
+            light0.color = new Color(1f, 0.3f, 0f, rate);
         }
-
-        bool isLight = LIGHT_BEGIN < time && time < LIGHT_END;
-        material.SetFloat("_NightTexEnabled", isLight ? 1f : 0f);
 
         if (SUNRISE_BEGIN < time && time < SUNRISE_END) // 夜明け前タイム
         {
             float rate = (time - SUNRISE_BEGIN) / (SUNRISE_END - SUNRISE_BEGIN);
-            material.SetFloat("_DayRatio", rate);
-            material.SetFloat("_BurnRatio", 1f - rate);
-            material.SetColor("_BurnColor", new Color(0.2f, 0.6f, 1.0f));
+            light0.color = new Color(0.2f, 0.6f, 1.0f, 1 - rate);
         }
-
-
-        //Debug.LogFormat("{0}", time);
-        renderer.material = material;
 
     }
 }

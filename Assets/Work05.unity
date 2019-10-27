@@ -112,80 +112,7 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
---- !u!21 &576383775
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: house-dfd(Clone)
-  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
-  m_ShaderKeywords: _NIGHTTEXENABLED_ON
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _DayTex:
-        m_Texture: {fileID: 2800000, guid: 70726fc1922beb848bf616e7b9df66c1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NightTex:
-        m_Texture: {fileID: 2800000, guid: d1ed5c03688b03e48a007fe8440fdd9e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _BurnRatio: 0.9199997
-    - _DayRatio: 0.08000028
-    - _NightTexEnabled: 1
-    m_Colors:
-    - _BlueTransfar: {r: 0.54432184, g: 0.8301887, b: 0.70423853, a: 1}
-    - _BurnColor: {r: 1, g: 0.3, b: 0, a: 1}
-    - _GreenTransfar: {r: 0.7735849, g: 0.52082837, b: 0.48531505, a: 1}
-    - _IDColor: {r: 0, g: 0.59463525, b: 1, a: 0}
-    - _RedTransfar: {r: 0.43796724, g: 0.4925401, b: 0.6981132, a: 1}
-    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
---- !u!21 &794418830
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: building3-dfd(Clone)
-  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
-  m_ShaderKeywords: _NIGHTTEXENABLED_ON
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _DayTex:
-        m_Texture: {fileID: 2800000, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NightTex:
-        m_Texture: {fileID: 2800000, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _BurnRatio: 0.8
-    - _DayRatio: 1
-    - _NightTexEnabled: 1
-    m_Colors:
-    - _BurnColor: {r: 1, g: 0.41899055, b: 0, a: 1}
-    - _IDColor: {r: 0, g: 1, b: 0.08719444, a: 0}
-    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
---- !u!43 &845696721
+--- !u!43 &329689163
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -345,7 +272,42 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!43 &846293525
+--- !u!21 &1049908106
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: building3-dfd(Clone)
+  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
+  m_ShaderKeywords: _NIGHTTEXENABLED_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DayTex:
+        m_Texture: {fileID: 2800000, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NightTex:
+        m_Texture: {fileID: 2800000, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BurnRatio: 0.8
+    - _DayRatio: 1
+    - _NightTexEnabled: 1
+    m_Colors:
+    - _BurnColor: {r: 1, g: 0.41899055, b: 0, a: 1}
+    - _IDColor: {r: 0, g: 1, b: 0.08719444, a: 0}
+    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
+--- !u!43 &1425995463
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -565,7 +527,7 @@ Camera:
     height: 1
   near clip plane: 0.01
   far clip plane: 1000
-  field of view: 41
+  field of view: 26.991467
   orthographic: 0
   orthographic size: 101.75
   m_Depth: -1
@@ -613,167 +575,80 @@ MonoBehaviour:
   vertFocusPos: 0
   distance: 180
   zoom: 2
---- !u!43 &1516944067
-Mesh:
+--- !u!21 &1663977363
+Material:
+  serializedVersion: 6
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 9
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 18
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 7
-    localAABB:
-      m_Center: {x: 8, y: 8.5, z: 16}
-      m_Extent: {x: 8, y: 8.5, z: 16}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000003000100000002000300050004000000000001000500010003000500030006000500
-  m_VertexData:
-    serializedVersion: 2
-    m_VertexCount: 7
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 2
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 140
-    _typelessdata: 000000000000000000000000abaa2a3e9a99a93e000000000000884100000000abaa2a3ededdcd3e00000000000000000000004200000000bcbbcb3e000000000000884100000042000000000000f03e0000804100000000000000000000803eabaaba3e0000804100008841000000000000803eefeede3e000080410000884100000042abaaaa3d8988003f
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 8, y: 8.5, z: 16}
-    m_Extent: {x: 8, y: 8.5, z: 16}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimized: 0
-  m_StreamData:
-    offset: 0
-    size: 0
-    path: 
---- !u!43 &1547266736
+  m_Name: house-dfd(Clone)
+  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
+  m_ShaderKeywords: _NIGHTTEXENABLED_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DayTex:
+        m_Texture: {fileID: 2800000, guid: 70726fc1922beb848bf616e7b9df66c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NightTex:
+        m_Texture: {fileID: 2800000, guid: d1ed5c03688b03e48a007fe8440fdd9e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BurnRatio: 0.112
+    - _DayRatio: 0.939
+    - _NightTexEnabled: 1
+    m_Colors:
+    - _BlueTransfar: {r: 0.54432184, g: 0.8301887, b: 0.70423853, a: 1}
+    - _BurnColor: {r: 0, g: 0.49018788, b: 1, a: 1}
+    - _GreenTransfar: {r: 0.7735849, g: 0.52082837, b: 0.48531505, a: 1}
+    - _IDColor: {r: 0, g: 0.59463525, b: 1, a: 0}
+    - _RedTransfar: {r: 0.43796724, g: 0.4925401, b: 0.6981132, a: 1}
+    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
+--- !u!21 &1739087160
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: building3-dfd(Clone)
+  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
+  m_ShaderKeywords: _NIGHTTEXENABLED_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DayTex:
+        m_Texture: {fileID: 2800000, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NightTex:
+        m_Texture: {fileID: 2800000, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BurnRatio: 0.8
+    - _DayRatio: 1
+    - _NightTexEnabled: 1
+    m_Colors:
+    - _BurnColor: {r: 1, g: 0.41899055, b: 0, a: 1}
+    - _IDColor: {r: 0, g: 1, b: 0.08719444, a: 0}
+    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
+--- !u!43 &1821201907
 Mesh:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -933,79 +808,6 @@ Mesh:
     offset: 0
     size: 0
     path: 
---- !u!21 &1674417265
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: house-dfd(Clone)
-  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
-  m_ShaderKeywords: _NIGHTTEXENABLED_ON
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _DayTex:
-        m_Texture: {fileID: 2800000, guid: 70726fc1922beb848bf616e7b9df66c1, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NightTex:
-        m_Texture: {fileID: 2800000, guid: d1ed5c03688b03e48a007fe8440fdd9e, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _BurnRatio: 0.112
-    - _DayRatio: 0.939
-    - _NightTexEnabled: 1
-    m_Colors:
-    - _BlueTransfar: {r: 0.54432184, g: 0.8301887, b: 0.70423853, a: 1}
-    - _BurnColor: {r: 0, g: 0.49018788, b: 1, a: 1}
-    - _GreenTransfar: {r: 0.7735849, g: 0.52082837, b: 0.48531505, a: 1}
-    - _IDColor: {r: 0, g: 0.59463525, b: 1, a: 0}
-    - _RedTransfar: {r: 0.43796724, g: 0.4925401, b: 0.6981132, a: 1}
-    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
---- !u!21 &1804324520
-Material:
-  serializedVersion: 6
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: building3-dfd(Clone)
-  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
-  m_ShaderKeywords: _NIGHTTEXENABLED_ON
-  m_LightmapFlags: 4
-  m_EnableInstancingVariants: 0
-  m_DoubleSidedGI: 0
-  m_CustomRenderQueue: -1
-  stringTagMap: {}
-  disabledShaderPasses: []
-  m_SavedProperties:
-    serializedVersion: 3
-    m_TexEnvs:
-    - _DayTex:
-        m_Texture: {fileID: 2800000, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    - _NightTex:
-        m_Texture: {fileID: 2800000, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
-        m_Scale: {x: 1, y: 1}
-        m_Offset: {x: 0, y: 0}
-    m_Floats:
-    - _BurnRatio: 0.8
-    - _DayRatio: 1
-    - _NightTexEnabled: 1
-    m_Colors:
-    - _BurnColor: {r: 1, g: 0.41899055, b: 0, a: 1}
-    - _IDColor: {r: 0, g: 1, b: 0.08719444, a: 0}
-    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
 --- !u!1 &1978766611
 GameObject:
   m_ObjectHideFlags: 0
@@ -1016,6 +818,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1978766613}
   - component: {fileID: 1978766612}
+  - component: {fileID: 1978766614}
   m_Layer: 0
   m_Name: Directional Light
   m_TagString: Untagged
@@ -1033,7 +836,7 @@ Light:
   m_Enabled: 1
   serializedVersion: 8
   m_Type: 1
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.3, b: 0, a: 0.13333333}
   m_Intensity: 1
   m_Range: 10
   m_SpotAngle: 30
@@ -1075,6 +878,216 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 50, y: -30, z: 0}
+--- !u!114 &1978766614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1978766611}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f55daa646b60c6446ad256fa4093c174, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!21 &1993389118
+Material:
+  serializedVersion: 6
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: house-dfd(Clone)
+  m_Shader: {fileID: 4800000, guid: f80b9c34c54d5694f8fa02c1c14b0877, type: 3}
+  m_ShaderKeywords: _NIGHTTEXENABLED_ON
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _DayTex:
+        m_Texture: {fileID: 2800000, guid: 70726fc1922beb848bf616e7b9df66c1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _NightTex:
+        m_Texture: {fileID: 2800000, guid: d1ed5c03688b03e48a007fe8440fdd9e, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Floats:
+    - _BurnRatio: 0.112
+    - _DayRatio: 0.939
+    - _NightTexEnabled: 1
+    m_Colors:
+    - _BlueTransfar: {r: 0.54432184, g: 0.8301887, b: 0.70423853, a: 1}
+    - _BurnColor: {r: 0, g: 0.49018788, b: 1, a: 1}
+    - _GreenTransfar: {r: 0.7735849, g: 0.52082837, b: 0.48531505, a: 1}
+    - _IDColor: {r: 0, g: 0.59463525, b: 1, a: 0}
+    - _RedTransfar: {r: 0.43796724, g: 0.4925401, b: 0.6981132, a: 1}
+    - _Transpalent: {r: 1, g: 0, b: 1, a: 1}
+--- !u!43 &2130398647
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 9
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 18
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 7
+    localAABB:
+      m_Center: {x: 8, y: 8.5, z: 16}
+      m_Extent: {x: 8, y: 8.5, z: 16}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000003000100000002000300050004000000000001000500010003000500030006000500
+  m_VertexData:
+    serializedVersion: 2
+    m_VertexCount: 7
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 2
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 140
+    _typelessdata: 000000000000000000000000abaa2a3e9a99a93e000000000000884100000000abaa2a3ededdcd3e00000000000000000000004200000000bcbbcb3e000000000000884100000042000000000000f03e0000804100000000000000000000803eabaaba3e0000804100008841000000000000803eefeede3e000080410000884100000042abaaaa3d8988003f
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 8, y: 8.5, z: 16}
+    m_Extent: {x: 8, y: 8.5, z: 16}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimized: 0
+  m_StreamData:
+    offset: 0
+    size: 0
+    path: 
 --- !u!1001 &1884060066233849638
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -1146,12 +1159,12 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 1804324520}
+      objectReference: {fileID: 1049908106}
     - target: {fileID: 8242749531600113930, guid: 4f70211efd231b34bb7b5c047d3e9eae,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 846293525}
+      objectReference: {fileID: 1425995463}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 4f70211efd231b34bb7b5c047d3e9eae, type: 3}
 --- !u!1001 &4129703725139451697
@@ -1225,11 +1238,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 576383775}
+      objectReference: {fileID: 1993389118}
     - target: {fileID: 7784452075084495697, guid: e578316874a394040aeaef069e86a8f6,
         type: 3}
       propertyPath: m_Mesh
       value: 
-      objectReference: {fileID: 1516944067}
+      objectReference: {fileID: 329689163}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e578316874a394040aeaef069e86a8f6, type: 3}
