@@ -4,7 +4,6 @@
   {
     [NoScaleOffset] _DayTex ("Day Texture", 2D) = "white" {}
     [NoScaleOffset] _NightTex ("Night Texture", 2D) = "black" {}
-    [MaterialToggle] _NightTexEnabled ("Night Texture Enabled", Float) = 1
     _Transpalent ("Transpalent Color", Color) = (1,0,1,1)
     _IDColor ("Color fo source object ID", Color) = (0,0,0,0)
   }
