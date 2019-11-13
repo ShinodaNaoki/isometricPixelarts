@@ -106,8 +106,8 @@
         // use 25% brightness of day texture, if night texture is disabled.
         colNight = lerp(colDay * 0.25, colNight, _NightTexEnabled);
 
-        o.gBuffer0 = colDay;
-        o.gBuffer3 = colNight;
+        o.gBuffer0 = fixed4(colDay.rgb, i.position.z);
+        o.gBuffer3 = fixed4(colNight.rgb, 1);
         o.gBuffer2 = float4(i.normal, 0) * 0.5 + float4(0.5, 0.5, 0.5, 0);
         o.gBuffer1 = _IDColor;
         o.depth = i.position.z;

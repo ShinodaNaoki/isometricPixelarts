@@ -31,22 +31,34 @@ sampler2D _CameraGBufferTexture2;
 sampler2D _CameraGBufferTexture3;
 sampler2D _DepthTexture;
 
+inline float _depthEdge(float2 uv, float base, float x, float y) {
+  float2 uv2 = float2(uv.x + x / _ScreenParams.x, uv.y + y / _ScreenParams.y);
+  half4 pix = tex2D (_CameraGBufferTexture0, uv2);
+  return smoothstep(0, 0.1, pix.a - base);
+}
+
+float CalcEdgeStrength (float d, float2 uv)
+{
+    float e1 = max(_depthEdge(uv, d, +1, 0), _depthEdge(uv, d, -1, 0));
+    float e2 = max(_depthEdge(uv, d, 0, +1), _depthEdge(uv, d, 0, -1));
+    
+    return max(e1, e2) * 0.75;
+}
+
 half4 CalculateLight (unity_v2f_deferred i)
 {
     float2 uv = i.uv.xy / i.uv.w;
     half4 colDay = tex2D (_CameraGBufferTexture0, uv);
     half4 normal = tex2D (_CameraGBufferTexture1, uv);
     half4 idCol = tex2D (_CameraGBufferTexture2, uv);
-    half4 colNight = tex2D (_CameraGBufferTexture3, uv);
+    half3 colNight = tex2D (_CameraGBufferTexture3, uv);    
 
-    half4 dpt = tex2D (_DepthTexture, i.uv);
-
-    
+    float edge =  1 - CalcEdgeStrength (colDay.a, uv);   
     
     // apply color burn effect to the day color.
     fixed3 colBurn = (1 - _LightColor .rgb) * _LightColor.a;
-    colDay = fixed4(colDay.rgb - colBurn,1);
-    return lerp(colNight, colDay, 1 - _LightColor.a);
+    colDay = fixed4(colDay.rgb - colBurn, 1) * edge;
+    return half4(lerp(colNight, colDay.rgb, 1 - _LightColor.a), 1);
 }
 
 #ifdef UNITY_HDR_ON
