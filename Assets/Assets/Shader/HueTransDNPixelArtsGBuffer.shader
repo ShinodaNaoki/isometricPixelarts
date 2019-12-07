@@ -91,6 +91,16 @@
 
         return fixed4(rgb,1);
       }
+      
+      inline float3 srgbToLinear(float3 c)
+      {
+          return lerp(c / 12.92, pow((c + 0.055) / 1.055, 2.4), step(0.04045, c));
+      }
+
+      inline float3 linearToSrgb(float3 c)
+      {
+          return lerp(c * 12.92, 1.055 * pow(c, 1.0 / 2.4) - 0.055, step(0.0031308, c));
+      }
 
       void frag (in v2f i, out flagout o)
       {
@@ -109,7 +119,7 @@
         o.gBuffer0 = fixed4(colDay.rgb, i.position.z);
         o.gBuffer3 = fixed4(colNight.rgb, 1);
         o.gBuffer2 = float4(i.normal, 0) * 0.5 + float4(0.5, 0.5, 0.5, 0);
-        o.gBuffer1 = _IDColor;
+        o.gBuffer1 = float4(GammaToLinearSpace(linearToSrgb(_IDColor.rgb)),_IDColor.a);
         o.depth = i.position.z;
       }
       ENDCG
