@@ -19,6 +19,7 @@ public class CaptureGBuffer : MonoBehaviour
         texture = new Texture2D(1, 1, TextureFormat.RGBAFloat, false);
         renderTexture = new RenderTexture(1, 1, 0, RenderTextureFormat.ARGB32);
         renderTexture.filterMode = FilterMode.Point;
+        Shader.SetGlobalVector("HighlightID", Color.black);
 
         buf = new CommandBuffer();
         buf.name = "GBuffer Test";
@@ -72,6 +73,7 @@ public class CaptureGBuffer : MonoBehaviour
         var seleted = FindObjectByIDColor(color);
         Debug.Log($"Color:{color}, Selection:{(seleted != null ? seleted.name:"N/A")}");
         if (seleted == null) return;
+        Shader.SetGlobalVector("HighlightID", (Color)color);
     }
     
 

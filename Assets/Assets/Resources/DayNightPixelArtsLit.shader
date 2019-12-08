@@ -1,5 +1,9 @@
 ﻿Shader "Hidden/DayNightPixelArtsLit"
 {
+Properties
+{
+  HighlightColor ("Color fo source object ID", Color) = (0,1,1,1)
+}
 SubShader {
 // Pass 1: Lighting pass
 //  LDR case - Lighting encoded into a subtractive ARGB8 buffer
@@ -31,6 +35,9 @@ sampler2D _CameraGBufferTexture2;
 sampler2D _CameraGBufferTexture3;
 sampler2D _DepthTexture;
 
+float4 HighlightID;
+half4 HighlightColor;
+
 inline float _depthEdge(float2 uv, float base, float x, float y) {
   float2 uv2 = float2(uv.x + x / _ScreenParams.x, uv.y + y / _ScreenParams.y);
   half4 pix = tex2D (_CameraGBufferTexture0, uv2);
@@ -45,19 +52,35 @@ float CalcEdgeStrength (float d, float2 uv)
     return max(e1, e2) * 0.75;
 }
 
+inline float _idMapEdge(float2 uv, float x, float y) {
+  float2 uv2 = float2(uv.x + x / _ScreenParams.x, uv.y + y / _ScreenParams.y);
+  half4 pix = tex2D (_CameraGBufferTexture1, uv2);
+  return step(length(pix - HighlightID),0.001);
+}
+
+float IsHighlightEdge (float2 uv)
+{
+    float e1 = max(_idMapEdge(uv, +1, 0), _idMapEdge(uv, -1, 0));
+    float e2 = max(_idMapEdge(uv, 0, +1), _idMapEdge(uv, 0, -1));
+    
+    return max(e1, e2);
+}
+
 half4 CalculateLight (unity_v2f_deferred i)
 {
     float2 uv = i.uv.xy / i.uv.w;
     half4 colDay = tex2D (_CameraGBufferTexture0, uv);
-    half4 normal = tex2D (_CameraGBufferTexture1, uv);
-    half4 idCol = tex2D (_CameraGBufferTexture2, uv);
+    half4 idCol = tex2D (_CameraGBufferTexture1, uv);
+    half4 normal = tex2D (_CameraGBufferTexture2, uv);
     half3 colNight = tex2D (_CameraGBufferTexture3, uv);    
-
-    float edge =  1 - CalcEdgeStrength (colDay.a, uv);   
+    float edge =  1 - CalcEdgeStrength (colDay.a, uv);
     // apply color burn effect to the day color.
     fixed3 colBurn = (1 - _LightColor .rgb) * _LightColor.a;
     colDay = fixed4(colDay.rgb - colBurn, 1) * edge;
-    return half4(lerp(colNight, colDay.rgb, 1 - _LightColor.a), 1);
+    half4 result = half4(lerp(colNight, colDay.rgb, 1 - _LightColor.a), 1);
+    float highlight =  length(idCol - HighlightID) < 0.001 ? 0.25 : IsHighlightEdge (uv);
+    result = lerp(result, HighlightColor, highlight);
+    return result;
 }
 
 #ifdef UNITY_HDR_ON
