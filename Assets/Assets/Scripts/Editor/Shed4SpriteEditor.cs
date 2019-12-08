@@ -15,6 +15,7 @@ public class Shed4SpriteEditor : Editor
     SerializedProperty pivot;
     SerializedProperty size;
     SerializedProperty autoAdjust;
+    SerializedProperty idColor;
 
     void OnEnable()
     {
@@ -25,6 +26,7 @@ public class Shed4SpriteEditor : Editor
         pivot = serializedObject.FindProperty("pivot");
         size = serializedObject.FindProperty("size");
         autoAdjust = serializedObject.FindProperty("autoSizeAdjust");
+        idColor = serializedObject.FindProperty("IDColor");
     }
 
     public override void OnInspectorGUI()
@@ -42,6 +44,7 @@ public class Shed4SpriteEditor : Editor
         EditorGUILayout.PropertyField(sprite4Day);
         EditorGUILayout.PropertyField(sprite4Night);
         EditorGUILayout.PropertyField(material);
+        EditorGUILayout.PropertyField(idColor);
 
         EditorGUILayout.PropertyField(autoAdjust);
         if (autoAdjust.boolValue)

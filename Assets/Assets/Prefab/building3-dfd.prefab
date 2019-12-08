@@ -52,6 +52,9 @@ MonoBehaviour:
   sprite4Day: {fileID: 21300004, guid: 3a7d7b97db11bcd44a2053eee9c1650d, type: 3}
   sprite4Night: {fileID: 21300004, guid: dcd74e0c9f0c2744ea2fd0b5d8163abf, type: 3}
   material: {fileID: 2100000, guid: f744e3846942a2349b882ae15aebaabf, type: 2}
+  IDColor:
+    serializedVersion: 2
+    rgba: 4294967294
 --- !u!23 &8242749531600113931
 MeshRenderer:
   m_ObjectHideFlags: 0

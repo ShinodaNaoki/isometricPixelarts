@@ -54,7 +54,6 @@ half4 CalculateLight (unity_v2f_deferred i)
     half3 colNight = tex2D (_CameraGBufferTexture3, uv);    
 
     float edge =  1 - CalcEdgeStrength (colDay.a, uv);   
-    
     // apply color burn effect to the day color.
     fixed3 colBurn = (1 - _LightColor .rgb) * _LightColor.a;
     colDay = fixed4(colDay.rgb - colBurn, 1) * edge;

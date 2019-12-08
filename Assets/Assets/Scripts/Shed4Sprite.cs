@@ -46,6 +46,8 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     // ドット絵を保持するマテリアル
     public Material material;
 
+    public Color32 IDColor;
+
     // マテリアルのメインテクスチャサイズ
     private Vector2Int texSize;
 
@@ -93,8 +95,8 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
     {
         spriteRect = GetSpriteRect();
         texSize = GetTextureSize();
-        Debug.LogFormat("Texture size:({0},{1})", texSize.x, texSize.y);
-        Debug.LogFormat("Sprite rect:({0},{1})-({2},{3})", spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height);
+        //Debug.LogFormat("Texture size:({0},{1})", texSize.x, texSize.y);
+        //Debug.LogFormat("Sprite rect:({0},{1})-({2},{3})", spriteRect.x, spriteRect.y, spriteRect.width, spriteRect.height);
         pivot.y = 0;
         pivot.x = Mathf.Clamp(pivot.x, 0, spriteRect.width);
 
@@ -118,6 +120,8 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
         newMaterial.SetTexture("_MainTex", sprite4Day.texture);
         newMaterial.SetTexture("_DayTex", sprite4Day.texture);
         newMaterial.SetTexture("_NightTex", sprite4Night.texture);
+        Vector4 vect = (Color)IDColor;
+        newMaterial.SetVector("_IDColor", vect);
         GetComponent<MeshFilter>().sharedMesh = mesh;
         GetComponent<MeshRenderer>().material = newMaterial;
     }

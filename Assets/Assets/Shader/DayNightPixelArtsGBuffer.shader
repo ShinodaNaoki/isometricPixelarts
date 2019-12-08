@@ -5,7 +5,7 @@
     [NoScaleOffset] _DayTex ("Day Texture", 2D) = "white" {}
     [NoScaleOffset] _NightTex ("Night Texture", 2D) = "black" {}
     _Transpalent ("Transpalent Color", Color) = (1,0,1,1)
-    _IDColor ("Color fo source object ID", Color) = (0,0,0,0)
+    _IDColor ("Color fo source object ID", Vector) = (0,0,0,0)
   }
   SubShader
   {
@@ -81,6 +81,7 @@
         o.gBuffer1 = _IDColor;
         o.depth = i.position.z;
       }
+
       ENDCG
     }
   }

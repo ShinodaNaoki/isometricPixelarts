@@ -6,7 +6,7 @@
     [NoScaleOffset] _NightTex ("Night Texture", 2D) = "black" {}
     //[MaterialToggle] _NightTexEnabled ("Night Texture Enabled", Float) = 1
     _Transpalent ("Transpalent Color", Color) = (1,0,1,1)
-    _IDColor ("Color fo source object ID", Color) = (0,0,0,0)
+    _IDColor ("Color fo source object ID", Vector) = (0,0,0,0)
     _RedTransfar ("RED Transfer Color", Color) = (1,0,0,1)
     _GreenTransfar ("GREEN Transfer Color", Color) = (0,1,0,1)
     _BlueTransfar ("BLUE Transfer Color", Color) = (0,0,1,1)
@@ -90,7 +90,7 @@
 
 
         return fixed4(rgb,1);
-      }
+      }      
 
       void frag (in v2f i, out flagout o)
       {
