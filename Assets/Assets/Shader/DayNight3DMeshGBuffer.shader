@@ -4,7 +4,6 @@
   {
     _MainTex ("Day Texture", 2D) = "white" {}
     _IDColor ("Color for source object ID", Vector) = (0,0,0,0)
-    _ScaleAdjust ("Scale Adjustment", Vector) = (1,1,1,1)
   }
   SubShader
   {
@@ -51,11 +50,9 @@
       sampler2D _MainTex;
       float4 _MainTex_ST;
       float4 _IDColor;
-      float4 _ScaleAdjust;
 
       void vert (in appdata v, out v2f o)
-      {
-        v.vertex *= _ScaleAdjust;
+      {        
         o.position = UnityObjectToClipPos(v.vertex);
         o.normal = UnityObjectToWorldNormal(v.normal);
         o.uv = TRANSFORM_TEX(v.uv, _MainTex);
