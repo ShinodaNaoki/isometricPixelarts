@@ -87,9 +87,9 @@ public class CaptureGBuffer : MonoBehaviour
         buf.CopyTexture(src, 0, 0, pos.x, pos.y, 1, 1, dst, 0, 0, 0, 0);
     }
 
-    private Shed4Sprite FindObjectByIDColor(Color32 idCol)
+    private HasIDColor FindObjectByIDColor(Color32 idCol)
     {
-        var structures = GameObject.FindObjectsOfType<Shed4Sprite>();
+        var structures = GameObject.FindObjectsOfType<HasIDColor>();
 
         var found = Array.Find(structures, shed => idCol.Equals(shed.IDColor));
         return found;

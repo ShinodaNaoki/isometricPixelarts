@@ -4,7 +4,7 @@ using UnityEditor;
 using UnityEngine;
 
 [ExecuteInEditMode]
-public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
+public class Shed4Sprite : HasIDColor
 {
     private bool needRestruct = true;
 
@@ -45,8 +45,6 @@ public class Shed4Sprite : MonoBehaviour //opposite -> courtyard
 
     // ドット絵を保持するマテリアル
     public Material material;
-
-    public Color32 IDColor;
 
     // マテリアルのメインテクスチャサイズ
     private Vector2Int texSize;
