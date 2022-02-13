@@ -1,4 +1,4 @@
-﻿Shader "Custom/SeudoSprite"
+﻿Shader "Custom/PseudoSprite"
 {
     Properties
     {
